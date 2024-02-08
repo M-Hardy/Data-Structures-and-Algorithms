@@ -1,11 +1,4 @@
 class Solution(object):    
-    
-    # 'pythonic' solution, compare reversed string
-    #  with non-alphanumeric removed; less efficient
-    #  than two pointer method because it uses O(n)
-    #  space to create reversed string
-    def isPalindrome2(self,s):
-        return
 
     # original solution using two pointers; O(n)
     def isPalindrome(self, s):
@@ -30,3 +23,18 @@ class Solution(object):
             l += 1
             r -= 1
         return True
+    
+        
+    # 'pythonic' solution, compare reversed string
+    #  with non-alphanumeric chars removed; less 
+    # efficient than two pointer method because it 
+    # uses O(n) space to create filtered string
+    def isPalindrome2(self,s):
+
+        filtered = ''
+
+        for char in s:
+            if char.isalnum():
+                filtered += char.lower()
+        
+        return filtered == filtered[::-1]
