@@ -1,31 +1,32 @@
 class Solution(object):    
     
+    # 'pythonic' solution, compare reversed string
+    #  with non-alphanumeric removed; less efficient
+    #  than two pointer method because it uses O(n)
+    #  space to create reversed string
+    def isPalindrome2(self,s):
+        return
+
     # original solution using two pointers; O(n)
-    def isPalindrome2(self, s):
+    def isPalindrome(self, s):
         """
         :type s: str
         :rtype: bool
         """
         
-        s = s.lower()
-        start = 0
-        end = len(s) - 1
+        l = 0
+        r = len(s) - 1
 
-        while start < end:
-            while not s[start].isalnum():
-                start += 1
-                if start >= end:
-                    return True
-            
-            while not s[end].isalnum():
-                end -= 1
-                if end <= start:
-                    return True
-            
-            if s[start] != s[end]:
+        while l < r:
+            while l < r and not s[l].isalnum():
+                l += 1
+                
+            while r > l and not s[r].isalnum():
+                r -= 1
+                
+            if s[l].lower() != s[r].lower():
                 return False
-            
-            start += 1
-            end -= 1
-        return True
 
+            l += 1
+            r -= 1
+        return True
