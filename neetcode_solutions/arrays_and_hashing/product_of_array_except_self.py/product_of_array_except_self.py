@@ -9,9 +9,10 @@ class Solution(object):
         for i in range(1, len(res)):
             res[i] *= res[i-1] * nums[i-1]
 
-        back_accumulator = [1] * len(nums)
-        for i  in range(len(back_accumulator)-2,-1,-1):
-            back_accumulator[i] = back_accumulator[i+1] * nums[i+1]
+        # back_accumulator = [1] * len(nums)
+        back_accumulator = 1
+        for i  in range(len(nums)-2,-1,-1):
+            back_accumulator *= nums[i+1]
             res[i] *= back_accumulator[i]
-            
+
         return res
