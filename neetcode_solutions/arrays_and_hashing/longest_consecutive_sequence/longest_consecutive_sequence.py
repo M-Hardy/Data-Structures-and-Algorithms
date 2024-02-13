@@ -6,16 +6,12 @@ class Solution(object):
         """
         
         numSet = set(nums)
-        max_seq = 0
+        longest = 0
 
         for num in numSet:
-            if num-1 in numSet:
-                continue
-            else:
-                current_seq = 1
-                current_num = num
-                while current_num+1 in numSet:
-                    current_seq += 1
-                    current_num += 1
-                max_seq = max(max_seq, current_seq)
-        return max_seq
+            if not num-1 in numSet: 
+                current_length = 1
+                while (num+current_length) in numSet:
+                    current_length += 1
+                longest = max(longest, current_length)
+        return longest
