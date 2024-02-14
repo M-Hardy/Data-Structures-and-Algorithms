@@ -5,26 +5,23 @@ class Solution(object):
         :rtype: int
         """
         
-        stack = [] #[index, height]
+        stack = [] #(index, height) pairs
         max_area = 0
 
-        for i, height in enumerate(heights):
-            current_height = [i, height]
+        for i, h in enumerate(heights):
+            start = i
 
-            while stack and (height < stack[-1][1]):
-                prev_index, prev_height = stack.pop()
-                prev_height_area = prev_height * (i - prev_index)
-                # print(prev_height, prev_height_area)
-                max_area = max(max_area, prev_height_area)
-                if prev_height >= current_height[1]:
-                    current_height[0] = prev_index
+            while stack and (h < stack[-1][1]):
+                i, prev_h = stack.pop()                
+                area = prev_h * (i - i)
+                max_area = max(max_area, area)
+                start = i
 
-            stack.append(current_height)
+            stack.append((start, h))
 
         while stack:
-            [index, height] = stack.pop()
-            area = height * (len(heights) - index)
-            # print(height, area)
+            (i, h) = stack.pop()
+            area = h * (len(heights) - i)
             max_area = max(max_area, area)
 
         return max_area
