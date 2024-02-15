@@ -23,9 +23,6 @@ class Solution(object):
 
             if hours <= h:
                 r = k -1
-                min_k = min(min_k, k)
+                min_k = k
 
         return min_k
-    
-test = Solution()
-print(test.minEatingSpeed([3,6,7,11], 8))
