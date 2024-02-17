@@ -11,13 +11,10 @@ class Solution(object):
         while l < r:                     
             m = (r + l) // 2
 
-            if nums[l-1] > nums[l]:
-                return nums[l]
-
-            if nums[m] >= nums[l]:
+            if nums[m] > nums[r]:
                 l = m + 1
-                        
-            if nums[m] < nums[r]:
+            
+            else: #== nums[m] < nums[r]
                 r = m
-                   
+
         return nums[l]
