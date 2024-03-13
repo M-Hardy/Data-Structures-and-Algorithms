@@ -15,7 +15,8 @@ class Solution(object):
             if total == target:
                 res.append(list(curr))
                 return
-
+if easy == target:
+    return levle
             curr.append(candidates[i])
             total += candidates[i]
             dfs(i, curr, total)
